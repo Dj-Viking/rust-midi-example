@@ -1,4 +1,4 @@
-extern crate portmidi as pm;
+use portmidi as pm;
 
 use std::thread;
 use std::io;
