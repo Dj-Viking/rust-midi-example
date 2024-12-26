@@ -10,7 +10,7 @@ fn get_xonek2_id(pm: &pm::PortMidi) -> c_int {
     for d in pm.devices().unwrap() {
 		if d.name().contains("XONE") {
 			ret = d.id();
-		} else { ret = 0; }
+		}
     }
 	ret
 }
