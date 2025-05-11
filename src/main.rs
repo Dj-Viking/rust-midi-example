@@ -15,16 +15,15 @@ fn get_xonek2_id(pm: &pm::PortMidi) -> c_int {
 	ret
 }
 
-static mut INTENSITY: u8 = 0;
 const TIMEOUT: Duration = Duration::from_millis(10);
 
 #[derive(Debug)]
-struct MyMidiMessage {
-	channel: u8,
-	intensity: u8,
+pub struct MyMidiMessage {
+	pub channel: u8,
+	pub intensity: u8,
 }
 impl MyMidiMessage {
-	fn new(m: pm::types::MidiEvent) -> Self {
+	pub fn new(m: pm::types::MidiEvent) -> Self {
 		Self {
 			channel: m.message.data1,
 			intensity: m.message.data2,
@@ -34,11 +33,6 @@ impl MyMidiMessage {
 
 fn handle_midi_msg(m: MyMidiMessage) -> () {
 	println!("{:?}", m);
-
-	unsafe {
-		INTENSITY = m.intensity;
-		println!("{}", INTENSITY);
-	}
 }
 
 fn main() {
